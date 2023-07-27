@@ -21,7 +21,7 @@ const ClothesMenu = () => {
 const Wrapper = styled.nav`
   color: black;
   width: 100%;
-  height: 115px;
+  height: 70px;
   font: 28px;
   display: flex;
   justify-content: space-around;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import HamburgerBar from "../images/HamburgerBar.png";
 import Cancel from "../images/Cancel.png";
+import Musinsa from "../images/Musinsa.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ const Navbar = () => {
           <ImgIcon src={HamburgerBar} />
         </MenuIcon>
       </MenuButton>
+      <LogoWrapper src={Musinsa} />
       <SidebarWrapper open={isMenuOpen}>
         <SidebarContent>
           <CloseButton onClick={toggleMenu}>
@@ -55,6 +57,11 @@ const MenuButton = styled.button`
 
 const MenuIcon = styled.span`
   font-size: 24px;
+`;
+
+const LogoWrapper = styled.img`
+  padding-left: 110px;
+  padding-top: 25px;
 `;
 
 const SidebarWrapper = styled.div`
