@@ -1,27 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import ExProduct from "../images/ExProduct.png";
+import ReviewModal from "./ReviewModal";
 
 function Product() {
+  // const [brandName, setBrandName] = useState("");
+  // const [productName, setProductName] = useState("");
+  // const [option, setOption] = useState("");
+  // const [date, setDate] = useState("");
+  // const [price, setPrice] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
+  const sampleData = [
+    {
+      brandName: "키뮤어",
+      productName: "코튼 워셔블 후드니트",
+      option: "M",
+      date: "2023-06-24",
+      price: 32000,
+    },
+    {
+      brandName: "토피",
+      productName: "데님펜츠",
+      option: "31",
+      date: "2023-06-31",
+      price: 48000,
+    },
+    {
+      brandName: "쿠어",
+      productName: "가디건",
+      option: "XL",
+      date: "2023-07-11",
+      price: 22000,
+    },
+  ];
+
   return (
-    <Wrapper>
-      <PhotoWrapper src={ExProduct}></PhotoWrapper>
-      <DetailWrapper>
-        <ProductDetail>브랜드명</ProductDetail>
-        <ProductDetail>코트 워셔블 후드니트</ProductDetail>
-        <ProductDetail marginbottom="5px" color="#9e9e9e" fontSize="24px">
-          옵션 M
-        </ProductDetail>
-        <ProductDetail color="#9e9e9e" fontSize="24px">
-          2023.06.02 구매
-        </ProductDetail>
-      </DetailWrapper>
-      <DetailWrapper>42000원</DetailWrapper>
-      <DetailWrapper>
-        <ReviewButton>일반후기 작성하기</ReviewButton>
-        <ReviewButton>포토후기 작성하기</ReviewButton>
-      </DetailWrapper>
-    </Wrapper>
+    <>
+      {sampleData.map((el) => (
+        <Wrapper>
+          <PhotoWrapper src={ExProduct}></PhotoWrapper>
+          <DetailWrapper>
+            <ProductDetail>{el.brandName}</ProductDetail>
+            <ProductDetail>{el.productName}</ProductDetail>
+            <ProductDetail marginbottom="5px" color="#9e9e9e" fontSize="24px">
+              사이즈 : {el.option}
+            </ProductDetail>
+            <ProductDetail color="#9e9e9e" fontSize="24px">
+              {el.date}
+            </ProductDetail>
+          </DetailWrapper>
+          <DetailWrapper>{el.price}원</DetailWrapper>
+          <DetailWrapper>
+            <ReviewButton>일반후기 작성하기</ReviewButton>
+            <div>
+              <ReviewButton onClick={showModal}>포토후기 작성하기</ReviewButton>
+              <div
+                style={{
+                  position: "absolute",
+                  width: "70%",
+                  backgroundColor: "yellow",
+                  top: "100px",
+                  left: "40%",
+                }}
+              >
+                {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
+              </div>
+            </div>
+            {/* <ReviewButton>포토후기 작성하기</ReviewButton> */}
+          </DetailWrapper>
+        </Wrapper>
+      ))}
+    </>
   );
 }
 
@@ -58,6 +112,10 @@ const ProductDetail = styled.div`
 `;
 
 const ReviewButton = styled.button`
+  width: 240px;
+  height: 50px;
+  margin: 5px;
+  font-size: 20px;
   color: white;
   background-color: black;
   border: 0px;
