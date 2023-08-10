@@ -24,7 +24,7 @@ const ModalImgUpload = () => {
         type="file"
         onChange={(e) => onUpload(e)}
       />
-      <img width={"100%"} src={imageSrc} />
+      <Img width={"100%"} src={imageSrc} />
     </Wrapper>
   );
 };
@@ -37,4 +37,8 @@ const Wrapper = styled.div`
   border-radius: 5px;
   width: 40%;
   height: 240px;
+`;
+
+const Img = styled.img`
+  width: 80%;
 `;

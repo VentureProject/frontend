@@ -30,7 +30,7 @@ const TitleBox = styled.nav`
   color: black;
   font-size: 32px;
   padding: 27px;
-  margin: 15px;
+  margin: 12px 12px 6px 12px;
 `;
 
 export default Review;

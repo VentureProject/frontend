@@ -25,14 +25,14 @@ function Product() {
     },
     {
       brandName: "토피",
-      productName: "데님펜츠",
+      productName: "SL01 섬머 데님 와이드 팬츠 (BLACK)",
       option: "31",
       date: "2023-06-31",
       price: 48000,
     },
     {
       brandName: "쿠어",
-      productName: "가디건",
+      productName: "소프트 부클 카라 단추 가디건",
       option: "XL",
       date: "2023-07-11",
       price: 22000,
@@ -43,35 +43,26 @@ function Product() {
     <>
       {sampleData.map((el) => (
         <Wrapper>
-          <PhotoWrapper src={ExProduct}></PhotoWrapper>
-          <DetailWrapper>
+          <DetailWrapper width="20%">
+            <PhotoWrapper src={ExProduct}></PhotoWrapper>
+          </DetailWrapper>
+          <DetailWrapper width="40%">
             <ProductDetail>{el.brandName}</ProductDetail>
             <ProductDetail>{el.productName}</ProductDetail>
-            <ProductDetail marginbottom="5px" color="#9e9e9e" fontSize="24px">
+            <ProductDetail marginbottom="5px" color="#9e9e9e" fontSize="20px">
               사이즈 : {el.option}
             </ProductDetail>
-            <ProductDetail color="#9e9e9e" fontSize="24px">
-              {el.date}
+            <ProductDetail color="#9e9e9e" fontSize="20px">
+              가격 : {el.price}원
             </ProductDetail>
           </DetailWrapper>
-          <DetailWrapper>{el.price}원</DetailWrapper>
+          <DetailWrapper width="20%">
+            <ProductDetail fontSize="24px">{el.date}</ProductDetail>
+          </DetailWrapper>
           <DetailWrapper>
             <ReviewButton>일반후기 작성하기</ReviewButton>
-            <div>
-              <ReviewButton onClick={showModal}>포토후기 작성하기</ReviewButton>
-              <div
-                style={{
-                  position: "absolute",
-                  width: "70%",
-                  backgroundColor: "yellow",
-                  top: "100px",
-                  left: "40%",
-                }}
-              >
-                {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
-              </div>
-            </div>
-            {/* <ReviewButton>포토후기 작성하기</ReviewButton> */}
+            <ReviewButton onClick={showModal}>포토후기 작성하기</ReviewButton>
+            {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
           </DetailWrapper>
         </Wrapper>
       ))}
@@ -85,11 +76,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-contents: center;
   background-color: white;
-  height: 220px;
+  height: 200px;
   color: black;
   font-size: 32px;
   padding: 15px;
-  margin: 15px;
+  margin: 6px 12px;
 `;
 
 const PhotoWrapper = styled.img`
@@ -98,17 +89,16 @@ const PhotoWrapper = styled.img`
 `;
 
 const DetailWrapper = styled.div`
-  width: 320px;
-  margin-left: 10%;
+  width: ${(props) => props.width};
   display: flex;
   flex-direction: column;
 `;
 
 const ProductDetail = styled.div`
   margin-top: ${(props) => props.margintop || "0px"};
-  margin-bottom: ${(props) => props.marginbottom || "15px"};
+  margin-bottom: ${(props) => props.marginbottom || "10px"};
   color: ${(props) => props.color || "black"};
-  font-size: ${(props) => props.fontSize || "32px"};
+  font-size: ${(props) => props.fontSize || "28px"};
 `;
 
 const ReviewButton = styled.button`
