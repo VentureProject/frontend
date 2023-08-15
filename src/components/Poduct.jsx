@@ -10,8 +10,10 @@ function Product() {
   // const [date, setDate] = useState("");
   // const [price, setPrice] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null); // 추가: 선택된 데이터를 저장하는 상태
 
-  const showModal = () => {
+  const showModal = (data) => {
+    setModalData(data);
     setModalOpen(true);
   };
 
@@ -61,8 +63,12 @@ function Product() {
           </DetailWrapper>
           <DetailWrapper>
             <ReviewButton>일반후기 작성하기</ReviewButton>
-            <ReviewButton onClick={showModal}>포토후기 작성하기</ReviewButton>
-            {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
+            <ReviewButton onClick={() => showModal(el)}>
+              포토후기 작성하기
+            </ReviewButton>
+            {modalOpen && (
+              <ReviewModal setModalOpen={setModalOpen} modalData={modalData} />
+            )}
           </DetailWrapper>
         </Wrapper>
       ))}
