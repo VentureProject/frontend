@@ -3,11 +3,38 @@ import styled from "styled-components";
 import ModalImgUpload from "./ModalImgUpload";
 import X from "../images/X.png";
 import xOver from "../images/XOver.png";
+import Yellow from "../images/Yellow.png";
+import Green from "../images/Green.png";
 
 function ReviewModal({ setModalOpen, modalData }) {
   const [xImg, setXImg] = useState(false);
   const closeModal = () => {
     setModalOpen(false);
+  };
+  const getUserImgUrl = (x) => {
+    modalData.userImgUrl = x;
+  };
+  const submitData = async () => {
+    console.log(modalData);
+    try {
+      const response = await fetch("https://9914-34-125-197-148.ngrok.io", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(modalData),
+      });
+      closeModal();
+      if (response.ok) {
+        // Handle successful response
+        console.log("Data submitted successfully");
+      } else {
+        // Handle error response
+        console.error("Error submitting data");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   return (
@@ -19,12 +46,14 @@ function ReviewModal({ setModalOpen, modalData }) {
           src={xImg ? xOver : X}
           onClick={closeModal}
         />
+        <XButton margin="4px 0 0 8px" src={Yellow} />
+        <XButton margin="4px 0 0 8px" src={Green} />
       </Top>
       <Box> 포토후기 작성하기</Box>
       {modalData && (
         <Box height="auto">
-          <DetailWrapper width="20%">
-            {/* <PhotoWrapper src={ExProduct}></PhotoWrapper> */}
+          <DetailWrapper width="24%">
+            <PhotoWrapper src={modalData.imgUrl}></PhotoWrapper>
           </DetailWrapper>
           <DetailWrapper width="40%">
             <ProductDetail>{modalData.brandName}</ProductDetail>
@@ -42,11 +71,11 @@ function ReviewModal({ setModalOpen, modalData }) {
         </Box>
       )}
       {/* <Box>{modalData.brandName}</Box> */}
-      <Box backgroundColor="none" height="240px">
-        <ModalImgUpload id="imgUpload" />
+      <Box backgroundcolor="none" height="240px">
+        <ModalImgUpload getUserImgUrl={getUserImgUrl} id="imgUpload" />
         <TextReview type="text" placeholder="텍스트 리뷰를 작성하여 주세요" />
       </Box>
-      <Box onClick={closeModal} justifyContent="center">
+      <Box onClick={submitData} justifycontent="center">
         제출하기
       </Box>
     </Wrapper>
@@ -69,24 +98,29 @@ const Wrapper = styled.div`
 const Top = styled.div`
   background-color: #555555;
   border-radius: 5px 5px 0 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  jsutify-content: center;
 `;
 
 const XButton = styled.img`
-  width: 15px;
-  height: 15px;
-  margin: 0px 15px;
+  width: 12px;
+  height: 12px;
+  // margin: 0 0 0 15px;
+  margin: ${(props) => props.margin || "4px 0 0 15px"};
 `;
 
 const Box = styled.div`
   // background-color: white;
-  background-color: ${(props) => props.backgroundColor || "white"};
+  background-color: ${(props) => props.backgroundcolor || "white"};
   margin: 8px;
   border-radius: 5px;
   // height: 55px;
   height: ${(props) => props.height || "55px"};
   font-size: 24px;
   display: flex;
-  justify-content: ${(props) => props.justifyContent || "left"};
+  justify-content: ${(props) => props.justifycontent || "left"};
   align-items: center;
 `;
 
