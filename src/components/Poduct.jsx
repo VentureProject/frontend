@@ -19,34 +19,46 @@ function Product() {
 
   const sampleData = [
     {
+      imgUrl:
+        "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_4131475%2F41314753854.jpg&type=a340",
+      userImgUrl: "",
       brandName: "키뮤어",
       productName: "코튼 워셔블 후드니트",
       option: "M",
       date: "2023-06-24",
       price: 32000,
+      isPhotoReviewed: false,
     },
     {
+      imgUrl:
+        "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_4156557%2F41565573442.jpg&type=a340",
+      userImgUrl: "",
       brandName: "토피",
       productName: "SL01 섬머 데님 와이드 팬츠 (BLACK)",
       option: "31",
       date: "2023-06-31",
       price: 48000,
+      isPhotoReviewed: false,
     },
     {
+      imgUrl:
+        "https://search.pstatic.net/common/?src=http%3A%2F%2Fshopping.phinf.naver.net%2Fmain_4002671%2F40026718527.20230514220134.jpg&type=a340",
+      userImgUrl: "",
       brandName: "쿠어",
       productName: "소프트 부클 카라 단추 가디건",
       option: "XL",
       date: "2023-07-11",
       price: 22000,
+      isPhotoReviewed: false,
     },
   ];
 
   return (
     <>
-      {sampleData.map((el) => (
-        <Wrapper>
+      {sampleData.map((el, index) => (
+        <Wrapper key={index}>
           <DetailWrapper width="20%">
-            <PhotoWrapper src={ExProduct}></PhotoWrapper>
+            <PhotoWrapper src={el.imgUrl}></PhotoWrapper>
           </DetailWrapper>
           <DetailWrapper width="40%">
             <ProductDetail>{el.brandName}</ProductDetail>
