@@ -25,12 +25,24 @@ const Navbar = () => {
             <ImgIcon src={Cancel} />
           </CloseButton>
           <MenuItem margintop={"115px"}>마이페이지</MenuItem>
+          <hr />
+          <MenuDetail margin="10px 0 0 0">구매내역</MenuDetail>
           <MenuItem>
-            <MenuDetail>구매내역</MenuDetail>
-            <MenuDetail>후기작성 | 적립금 확인</MenuDetail>
+            <MenuDetail margin="0 0 0 0px" fontSize="16px">
+              후기작성
+            </MenuDetail>
+            <MenuDetail margin="0 12px" fontSize="16px">
+              |
+            </MenuDetail>
+            <MenuDetail margin="0" fontSize="16px">
+              적립금 확인
+            </MenuDetail>
           </MenuItem>
+          <hr />
           <MenuItem>배송조회</MenuItem>
+          <hr />
           <MenuItem>쿠폰함</MenuItem>
+          <hr />
           <MenuItem>환경설정</MenuItem>
         </SidebarContent>
       </SidebarWrapper>
@@ -43,13 +55,13 @@ const Wrapper = styled.nav`
   background-color: black;
   color: white;
   width: 100%;
-  height: 115px;
+  height: 100px;
 `;
 
 const MenuButton = styled.button`
   position: absolute;
-  top: 42px;
-  left: 35px;
+  top: 32px;
+  left: 12px;
   background: none;
   border: none;
   cursor: pointer;
@@ -61,7 +73,7 @@ const MenuIcon = styled.span`
 
 const LogoWrapper = styled.img`
   padding-left: 110px;
-  padding-top: 25px;
+  padding-top: 20px;
 `;
 
 const SidebarWrapper = styled.div`
@@ -104,17 +116,18 @@ const CloseButton = styled.button`
 const MenuItem = styled.div`
   top: 10px;
   margin-top: ${(props) => props.margintop || "0px"};
-  margin-bottom: 20px;
+  padding: 4px 0px;
+  font-size: ${(props) => props.fontSize || "24px"};
+  display: flex;
+`;
+
+const MenuDetail = styled.p`
+  margin: ${(props) => props.margin || "10px 0"};
   font-size: ${(props) => props.fontSize || "24px"}; ;
 `;
 
-const MenuDetail = styled.div`
-  top: 10px;
-  margin-top: ${(props) => props.margintop || "0px"};
-  margin-bottom: 20px;
-  font-size: ${(props) => props.fontSize || "24px"}; ;
+const ImgIcon = styled.img`
+  margin: 4px 0 0 8px;
 `;
-
-const ImgIcon = styled.img``;
 
 export default Navbar;
