@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/NavBar";
 import ReviewedProduct from "../components/ReviewedProduct";
+import GetReviewed from "../components/GetReviewed";
 
 function Reward() {
   return (
@@ -9,13 +10,24 @@ function Reward() {
       <Navbar />
       <TitleBox> 적립금 확인하기 </TitleBox>
       <BodyBox>
+        <hr />
         <SmallTitle>
-          <SmallTitleA width="50%">상품명</SmallTitleA>
-          <SmallTitleA>옵션</SmallTitleA>
-          <SmallTitleA>구입날짜</SmallTitleA>
-          <SmallTitleA>지급내용</SmallTitleA>
+          <DetailWrapper width="50%">
+            <ProductDetail>상품명</ProductDetail>
+          </DetailWrapper>
+          <DetailWrapper width="10%">
+            <ProductDetail fontSize="20px">옵션</ProductDetail>
+          </DetailWrapper>
+          <DetailWrapper width="20%">
+            <ProductDetail fontSize="20px">구입날짜</ProductDetail>
+          </DetailWrapper>
+          <DetailWrapper width="20%">
+            <ProductDetail fontSize="20px">지급내용</ProductDetail>
+          </DetailWrapper>
         </SmallTitle>
-        <ReviewedProduct />
+        <hr />
+        {/* <ReviewedProduct /> */}
+        <GetReviewed />
       </BodyBox>
     </Wrapper>
   );
@@ -42,6 +54,7 @@ const TitleBox = styled.nav`
 `;
 const BodyBox = styled.div`
   padding: 0px;
+  //   padding: 0 10px;
   background-color: white;
   height: 70%;
   color: black;
@@ -50,16 +63,32 @@ const BodyBox = styled.div`
   margin: 12px 12px 6px 12px;
 `;
 const SmallTitle = styled.div`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  width: 100%;
-  display: flex;
-  //   justify-content: space-around;
+  //   width: 100%;
+  //   display: flex;
   font-size: 20px;
+  display: flex;
+  font-size: 32px;
+  padding: 0 15px;
+  margin: 6px 12px;
 `;
 const SmallTitleA = styled.a`
   font-size: 24px;
   width: ${(props) => props.width};
+  display: flex;
+  //   justify-content: center;
+`;
+
+const DetailWrapper = styled.div`
+  width: ${(props) => props.width};
+  display: flex;
+  flex-direction: column;
+`;
+
+const ProductDetail = styled.div`
+  margin-top: ${(props) => props.margintop || "0px"};
+  margin-bottom: ${(props) => props.marginbottom || "0px"};
+  color: ${(props) => props.color || "black"};
+  font-size: ${(props) => props.fontSize || "20px"};
 `;
 
 export default Reward;
