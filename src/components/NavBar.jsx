@@ -18,7 +18,9 @@ const Navbar = () => {
           <ImgIcon src={HamburgerBar} />
         </MenuIcon>
       </MenuButton>
-      <LogoWrapper src={Musinsa} />
+      <AHref href="/">
+        <LogoWrapper src={Musinsa} />
+      </AHref>
       <SidebarWrapper open={isMenuOpen}>
         <SidebarContent>
           <CloseButton onClick={toggleMenu}>
@@ -29,13 +31,13 @@ const Navbar = () => {
           <MenuDetail margin="10px 0 0 0">구매내역</MenuDetail>
           <MenuItem>
             <MenuDetail margin="0 0 0 0px" fontSize="16px">
-              후기작성
+              <AHref href="/Review">후기작성</AHref>
             </MenuDetail>
             <MenuDetail margin="0 12px" fontSize="16px">
               |
             </MenuDetail>
             <MenuDetail margin="0" fontSize="16px">
-              적립금 확인
+              <AHref href="/Reward">적립금 확인</AHref>
             </MenuDetail>
           </MenuItem>
           <hr />
@@ -128,6 +130,11 @@ const MenuDetail = styled.p`
 
 const ImgIcon = styled.img`
   margin: 4px 0 0 8px;
+`;
+
+const AHref = styled.a`
+  color: white;
+  text-decoration-line: none;
 `;
 
 export default Navbar;

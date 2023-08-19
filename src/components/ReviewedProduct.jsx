@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import ExProduct from "../images/ExProduct.png";
 import ReviewModal from "./ReviewModal";
 
@@ -55,6 +55,8 @@ function ReviewedProduct() {
 
   return (
     <>
+      <GlobalStyle />
+      <hr />
       {sampleData.map((el, index) => (
         <>
           <Wrapper key={index}>
@@ -86,8 +88,15 @@ function ReviewedProduct() {
   );
 }
 
+const GlobalStyle = createGlobalStyle`
+  *, *::before, *::after {
+    box-sizing: border-box;
+    padding:0px;
+    margin:0px;
+  }
+`;
+
 const Wrapper = styled.div`
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-contents: center;

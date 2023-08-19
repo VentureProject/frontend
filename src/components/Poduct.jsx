@@ -127,6 +127,9 @@ const ReviewButton = styled.button`
   color: white;
   background-color: black;
   border: 0px;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export default Product;
