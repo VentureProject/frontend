@@ -5,12 +5,9 @@ function App() {
 
   const sendTextToServer = async () => {
     try {
-      const response = await fetch(
-        "https://9914-34-125-197-148.ngrok.io/photoReview",
-        {
-          method: "GET",
-        }
-      );
+      const response = await fetch("http://0.0.0.0:8000/photoReview", {
+        method: "GET",
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -41,6 +38,7 @@ function App() {
           <li>Date: {response.date}</li>
           <li>Price: {response.price}</li>
           <li>Is Photo Reviewed: {response.isPhotoReviewed ? "Yes" : "No"}</li>
+          <li>거절사유 : {response.whyRejected}</li>
         </ul>
       )}
     </div>

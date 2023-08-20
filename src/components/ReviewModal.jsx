@@ -17,7 +17,7 @@ function ReviewModal({ setModalOpen, modalData }) {
   const submitData = async () => {
     console.log(modalData);
     try {
-      const response = await fetch("https://9914-34-125-197-148.ngrok.io", {
+      const response = await fetch("http://0.0.0.0:8000/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

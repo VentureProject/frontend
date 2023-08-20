@@ -15,12 +15,9 @@ function GetReviewed() {
 
   const sendTextToServer = async () => {
     try {
-      const response = await fetch(
-        "https://6757-35-185-114-243.ngrok.io/photoReview",
-        {
-          method: "GET",
-        }
-      );
+      const response = await fetch("http://0.0.0.0:8000/photoReview", {
+        method: "GET",
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -35,7 +32,7 @@ function GetReviewed() {
 
   return (
     <>
-      {/* <button onClick={sendTextToServer}>Send Text</button> */}
+      <button onClick={sendTextToServer}>Send Text</button>
       {/* {sendTextToServer()} */}
       <GlobalStyle />
       <hr />
@@ -57,7 +54,9 @@ function GetReviewed() {
             </DetailWrapper>
             <DetailWrapper width="20%">
               {(response.isPhotoReviewed && (
-                <ProductDetail fontSize="20px">적립금 +3000</ProductDetail>
+                <ProductDetail fontSize="20px">
+                  적립금이 지급되었습니다
+                </ProductDetail>
               )) || (
                 // <ProductDetail fontSize="20px">
                 //   적립금이 적립되지 않았습니다. 사유 : {response.whyRejected}
