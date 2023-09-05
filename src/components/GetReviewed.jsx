@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import ReviewModal from "./ReviewModal";
 
@@ -30,9 +30,13 @@ function GetReviewed() {
     }
   };
 
+  useEffect(() => {
+    sendTextToServer(); // 페이지가 로드될 때 함수 실행
+  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행
+
   return (
     <>
-      <button onClick={sendTextToServer}>Send Text</button>
+      {/* <button onClick={sendTextToServer}>Send Text</button> */}
       {/* {sendTextToServer()} */}
       <GlobalStyle />
       <hr />

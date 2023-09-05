@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/NavBar";
-import ReviewedProduct from "../components/ReviewedProduct";
 import GetReviewed from "../components/GetReviewed";
 
 function Reward() {
@@ -26,7 +25,6 @@ function Reward() {
           </DetailWrapper>
         </SmallTitle>
         <hr />
-        {/* <ReviewedProduct /> */}
         <GetReviewed />
       </BodyBox>
     </Wrapper>
@@ -52,9 +50,9 @@ const TitleBox = styled.nav`
   padding: 27px;
   margin: 12px 12px 6px 12px;
 `;
+
 const BodyBox = styled.div`
   padding: 0px;
-  //   padding: 0 10px;
   background-color: white;
   height: 70%;
   color: black;
@@ -62,20 +60,13 @@ const BodyBox = styled.div`
   padding: 27px;
   margin: 12px 12px 6px 12px;
 `;
+
 const SmallTitle = styled.div`
-  //   width: 100%;
-  //   display: flex;
   font-size: 20px;
   display: flex;
   font-size: 32px;
   padding: 0 15px;
   margin: 6px 12px;
-`;
-const SmallTitleA = styled.a`
-  font-size: 24px;
-  width: ${(props) => props.width};
-  display: flex;
-  //   justify-content: center;
 `;
 
 const DetailWrapper = styled.div`
