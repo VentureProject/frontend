@@ -4,7 +4,7 @@ import ReviewModal from "./ReviewModal";
 
 function GetReviewed() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalData, setModalData] = useState(null); // 추가: 선택된 데이터를 저장하는 상태
+  const [modalData, setModalData] = useState(null);
 
   const showModal = (data) => {
     setModalData(data);
@@ -31,8 +31,8 @@ function GetReviewed() {
   };
 
   useEffect(() => {
-    sendTextToServer(); // 페이지가 로드될 때 함수 실행
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행
+    sendTextToServer();
+  }, []);
 
   return (
     <>
@@ -62,13 +62,11 @@ function GetReviewed() {
                   적립금이 지급되었습니다
                 </ProductDetail>
               )) || (
-                // <ProductDetail fontSize="20px">
-                //   적립금이 적립되지 않았습니다. 사유 : {response.whyRejected}
-                // </ProductDetail>
                 <DetailWrapper>
                   <ReviewButton onClick={() => showModal(response)}>
                     포토후기 재작성
                   </ReviewButton>
+                  {/* <img src={response.userImgUrl} /> */}
                   <Reject>미지급 사유 : {response.whyRejected}</Reject>
                   {modalOpen && (
                     <ReviewModal

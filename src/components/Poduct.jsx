@@ -22,6 +22,7 @@ function Product() {
       imgUrl:
         "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_4131475%2F41314753854.jpg&type=a340",
       userImgUrl: "",
+      userImgFilename: "",
       brandName: "키뮤어",
       productName: "코튼 워셔블 후드니트",
       option: "M",
@@ -33,6 +34,7 @@ function Product() {
       imgUrl:
         "https://search.pstatic.net/common/?src=https%3A%2F%2Fshopping-phinf.pstatic.net%2Fmain_4156557%2F41565573442.jpg&type=a340",
       userImgUrl: "",
+      userImgFilename: "",
       brandName: "토피",
       productName: "SL01 섬머 데님 와이드 팬츠 (BLACK)",
       option: "31",
@@ -44,6 +46,7 @@ function Product() {
       imgUrl:
         "https://search.pstatic.net/common/?src=http%3A%2F%2Fshopping.phinf.naver.net%2Fmain_4002671%2F40026718527.20230514220134.jpg&type=a340",
       userImgUrl: "",
+      userImgFilename: "",
       brandName: "쿠어",
       productName: "소프트 부클 카라 단추 가디건",
       option: "XL",

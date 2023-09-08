@@ -2,21 +2,56 @@ import { useState } from "react";
 import styled from "styled-components";
 import Camera from "../images/Camera.png";
 
-function ModalImgUpload({ getUserImgUrl }) {
+// function ModalImgUpload({ getUserImgUrl }) {
+//   const [imageSrc, setImageSrc] = useState(null);
+
+//   // const onUpload = (e) => {
+//   //   const file = e.target.files[0];
+//   //   const reader = new FileReader();
+//   //   reader.readAsDataURL(file);
+
+//   //   return new Promise((resolve) => {
+//   //     reader.onload = () => {
+//   //       // console.log(imageSrc);
+//   //       setImageSrc(reader.result || null);
+//   //       resolve();
+//   //     };
+//   //   });
+//   const onUpload = (e) => {
+//     const file = e.target.files[0];
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+
+//     reader.onload = () => {
+//       const imageData = reader.result || null;
+//       setImageSrc(imageData);
+//       getUserImgUrl(imageData);
+//     };
+//   };
+//   // console.log("URL : " + imageSrc);
+//   return (
+//     <Wrapper>
+//       <Input
+//         accept="image/*"
+//         multiple
+//         type="file"
+//         onChange={(e) => onUpload(e)}
+//         id="input-file"
+//       />
+//       <Label htmlFor="input-file">
+//         <LabelImg src={Camera} />
+//         <div>사진 업로드</div>
+//       </Label>
+//       <Label htmlFor="input-file">
+//         <Img src={imageSrc} />
+//       </Label>
+//     </Wrapper>
+//   );
+// }
+function ModalImgUpload({ getUserImgUrl, getUserImgFilename }) {
   const [imageSrc, setImageSrc] = useState(null);
+  const [imageName, setImageName] = useState(null);
 
-  // const onUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-
-  //   return new Promise((resolve) => {
-  //     reader.onload = () => {
-  //       // console.log(imageSrc);
-  //       setImageSrc(reader.result || null); // 파일의 컨텐츠
-  //       resolve();
-  //     };
-  //   });
   const onUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -24,11 +59,14 @@ function ModalImgUpload({ getUserImgUrl }) {
 
     reader.onload = () => {
       const imageData = reader.result || null;
-      setImageSrc(imageData); // 파일의 컨텐츠
-      getUserImgUrl(imageData); // imageSrc가 null이 아닌 경우에 호출
+      setImageSrc(imageData);
+      const fileName = file.name;
+
+      getUserImgUrl(imageData);
+      getUserImgFilename(fileName);
     };
   };
-  // console.log("URL : " + imageSrc);
+
   return (
     <Wrapper>
       <Input
@@ -45,6 +83,7 @@ function ModalImgUpload({ getUserImgUrl }) {
       <Label htmlFor="input-file">
         <Img src={imageSrc} />
       </Label>
+      {imageName && <div>파일 이름: {imageName}</div>}
     </Wrapper>
   );
 }

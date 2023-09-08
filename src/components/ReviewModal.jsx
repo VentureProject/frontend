@@ -14,6 +14,9 @@ function ReviewModal({ setModalOpen, modalData }) {
   const getUserImgUrl = (x) => {
     modalData.userImgUrl = x;
   };
+  const getUserImgFilename = (x) => {
+    modalData.userImgFilename = x;
+  };
   const submitData = async () => {
     console.log(modalData);
     try {
@@ -26,10 +29,8 @@ function ReviewModal({ setModalOpen, modalData }) {
       });
       closeModal();
       if (response.ok) {
-        // Handle successful response
         console.log("Data submitted successfully");
       } else {
-        // Handle error response
         console.error("Error submitting data");
       }
     } catch (error) {
@@ -72,7 +73,11 @@ function ReviewModal({ setModalOpen, modalData }) {
       )}
       {/* <Box>{modalData.brandName}</Box> */}
       <Box backgroundcolor="none" height="240px">
-        <ModalImgUpload getUserImgUrl={getUserImgUrl} id="imgUpload" />
+        <ModalImgUpload
+          getUserImgUrl={getUserImgUrl}
+          getUserImgFilename={getUserImgFilename}
+          id="imgUpload"
+        />
         <TextReview type="text" placeholder="텍스트 리뷰를 작성하여 주세요" />
       </Box>
       <Box onClick={submitData} justifycontent="center">
